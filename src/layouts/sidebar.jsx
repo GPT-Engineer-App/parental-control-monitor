@@ -8,6 +8,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import { ScrollArea } from "@/components/ui/scroll-area";
 import { cn } from "@/lib/utils";
 import { CircleUser, Menu, Package2 } from "lucide-react";
 import { NavLink, Outlet } from "react-router-dom";
@@ -41,14 +42,16 @@ const Sidebar = () => (
         </NavLink>
       </div>
       <div className="flex-1">
-        <nav className="grid items-start px-2 text-sm font-medium lg:px-4 gap-2">
-          {navItems.map((item) => (
-            <SidebarNavLink key={item.to} to={item.to}>
-              {item.icon}
-              {item.title}
-            </SidebarNavLink>
-          ))}
-        </nav>
+        <ScrollArea className="h-full">
+          <nav className="grid items-start px-2 text-sm font-medium lg:px-4 gap-2">
+            {navItems.map((item) => (
+              <SidebarNavLink key={item.to} to={item.to}>
+                {item.icon}
+                {item.title}
+              </SidebarNavLink>
+            ))}
+          </nav>
+        </ScrollArea>
       </div>
     </div>
   </div>
@@ -63,20 +66,22 @@ const MobileSidebar = () => (
       </Button>
     </SheetTrigger>
     <SheetContent side="left" className="flex flex-col">
-      <nav className="grid gap-2 text-lg font-medium">
-        <NavLink
-          to="/"
-          className="flex items-center gap-2 text-lg font-semibold mb-4"
-        >
-          <Package2 className="h-6 w-6" />
-          <span className="sr-only">Acme Inc</span>
-        </NavLink>
-        {navItems.map((item) => (
-          <SidebarNavLink key={item.to} to={item.to}>
-            {item.title}
-          </SidebarNavLink>
-        ))}
-      </nav>
+      <ScrollArea className="h-full">
+        <nav className="grid gap-2 text-lg font-medium">
+          <NavLink
+            to="/"
+            className="flex items-center gap-2 text-lg font-semibold mb-4"
+          >
+            <Package2 className="h-6 w-6" />
+            <span className="sr-only">Acme Inc</span>
+          </NavLink>
+          {navItems.map((item) => (
+            <SidebarNavLink key={item.to} to={item.to}>
+              {item.title}
+            </SidebarNavLink>
+          ))}
+        </nav>
+      </ScrollArea>
     </SheetContent>
   </Sheet>
 );
