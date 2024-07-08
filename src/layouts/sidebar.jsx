@@ -34,16 +34,16 @@ const Layout = () => {
 
 const Sidebar = () => (
   <div className="hidden border-r bg-muted/40 md:block">
-    <div className="flex h-full max-h-screen flex-col gap-2">
+    <div className="flex h-full max-h-screen flex-col gap-4">
       <div className="flex h-14 items-center border-b px-4 lg:h-[60px] lg:px-6">
-        <NavLink to="/" className="flex items-center gap-2 font-semibold">
+        <NavLink to="/" className="flex items-center gap-3 font-semibold">
           <Package2 className="h-6 w-6" />
           <span>Acme Inc</span>
         </NavLink>
       </div>
-      <div className="flex-1">
+      <div className="flex-1 overflow-auto">
         <ScrollArea className="h-full">
-          <nav className="grid items-start px-2 text-sm font-medium lg:px-4 gap-2">
+          <nav className="grid items-start px-4 py-2 text-sm font-medium gap-2">
             {navItems.map((item) => (
               <SidebarNavLink key={item.to} to={item.to}>
                 {item.icon}
